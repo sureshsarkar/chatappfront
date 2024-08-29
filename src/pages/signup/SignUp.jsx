@@ -6,8 +6,7 @@ import UserName from '../components/UserName.jsx'
 import Password from '../components/Password.jsx'
 import Cpassword from '../components/Cpassword.jsx'
 import SubmitButton from '../components/SubmitButton.jsx'
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import {useNavigate, Link } from 'react-router-dom'
 
 
 const SignUp = () => {
