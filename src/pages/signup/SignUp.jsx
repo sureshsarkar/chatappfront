@@ -47,7 +47,7 @@ const SignUp = () => {
 
     }
  
-    const user = await axios.post(`http://localhost:5000/api/auth/signup`, data);
+    const user = await axios.post(`https://chatappbackend-l6tu.onrender.com/api/auth/signup`, data);
 
     if(user.data.success===true){
       navigate('/');
