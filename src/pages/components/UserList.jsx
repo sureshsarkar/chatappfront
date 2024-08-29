@@ -29,7 +29,7 @@ const allUser = async ()=>{
           {users.data.map(user => (
           <div className="d-flex py-2 border-b-2">
               <div className="userImg">
-                <img src="../src/assets/images/home.jpg" alt="Logo" />
+                <img src={user.profilePic} alt="Logo" />
               </div>
               <div className="p-2 fullNameText">{user.fullname}</div>
           </div>
