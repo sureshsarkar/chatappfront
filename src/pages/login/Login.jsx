@@ -20,6 +20,9 @@ const Login = () => {
    
       // return false;
       const { userData } = await axios.post(`https://chatappbackend-l6tu.onrender.com/api/auth/login`, data)
+      console.log(userData);
+      return false
+      
       if (userData?.success) {
           navigate("/");
       }
@@ -46,7 +49,7 @@ const Login = () => {
             <form action='' method='post'>
               <UserName handleChange = {handleChange} selectedUsername={inputs.username}/>
               <Password handleChange = {handleChange} selectedPassword={inputs.password}/>
-              <SubmitButton onClickSubmit={handelSubmit}/> <span className='text-primary underline'><Link to="/login">Login Now</Link></span>
+              <SubmitButton onClickSubmit={handelSubmit}/> <span className='text-primary underline'>New User<Link to="/signup">Signup Now</Link></span>
             </form>
           </div>
           </div>
