@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import SubmitButton from '../components/SubmitButton'
-import { Link } from 'react-router-dom'
-
+import UserName from '../components/UserName.jsx'
+import Password from '../components/Password.jsx'
+import { Link,useNavigate } from 'react-router-dom'
 const Login = () => {
+  const navigate = useNavigate();
   const [inputs,setInputs] = useState({
     username:'',
     password:'',
-  })
-
+  });
   const handelSubmit = async (e)=>{
     try {
       e.preventDefault()
@@ -16,22 +17,17 @@ const Login = () => {
           password: inputs.password
       }
    
-      return false;
-      // const { data } = await axios.put(`/api/v1/blog/update-blog/${id}`, {
-          // username: inputs.username,
-          // password: inputs.password
-      // })
-      // if (data?.success) {
-      //     alert("Blog Update");
-      //     navigate("/my-blogs")
-      // }
-
+      // return false;
+      const { userData } = await axios.put(`https://chatappbackend-l6tu.onrender.com/api/auth/login`, data)
+      if (userData?.success) {
+          navigate("/");
+      }
     } catch (error) {
-      
+      console.log(error);
     }
   }
 
-  const handelChange = (e)=>{
+  const handleChange = (e)=>{
     setInputs((inputs) => ({
       ...inputs,
       [e.target.name]: e.target.value
@@ -47,16 +43,9 @@ const Login = () => {
             <h1 className='h1 text-center'>Login into LiveChat</h1>
             <div className="formWidth">
             <form action='' method='post'>
-            <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">Username</label>
-              <input type="text" className="form-control" name="username" value={inputs.username} onChange={handelChange}/>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-              <input type="password" className="form-control" name="password" value={inputs.password} onChange={handelChange}/>
-            </div>
-            <button type="submit" className="btn btn-primary" onClick={handelSubmit}>Submit</button>
-               <span className='text-primary'>New User <Link className='underline' to="/signup">SignUp</Link></span>
+              <UserName handleChange = {handleChange} selectedUsername={inputs.username}/>
+              <Password handleChange = {handleChange} selectedPassword={inputs.password}/>
+              <SubmitButton onClickSubmit={handelSubmit}/> <span className='text-primary underline'><Link to="/login">Login Now</Link></span>
             </form>
           </div>
           </div>
