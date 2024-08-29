@@ -7,7 +7,7 @@ const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null); 
 const allUser = async ()=>{
  try {
-    const allusers = await axios.post(`https://chatappbackend-l6tu.onrender.com/api/auth/alluser`, null);
+    const allusers = await axios.get(`https://chatappbackend-l6tu.onrender.com/api/auth/alluser`, null);
     console.log(allusers);
     setUsers(allusers.data)
   } catch (error) {
