@@ -8,8 +8,8 @@ const [error, setError] = useState(null);
 const allUser = async ()=>{
  try {
     const allusers = await axios.get(`https://chatappbackend-l6tu.onrender.com/api/auth/alluser`, null);
-    console.log(allusers);
     setUsers(allusers.data)
+    console.log(users.data);
   } catch (error) {
     setError(error.message);  // Handle any errors that occur during fetch
   } finally {
@@ -26,7 +26,7 @@ const allUser = async ()=>{
     <>
        <div className="scrollBar">
        
-          {users.map(user => (
+          {users.data.map(user => (
           <div className="d-flex py-2 border-b-2">
               <div className="userImg">
                 <img src="../src/assets/images/home.jpg" alt="Logo" />
