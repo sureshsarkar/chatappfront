@@ -9,7 +9,7 @@ const allUser = async ()=>{
  try {
     const allusers = await axios.get(`https://chatappbackend-l6tu.onrender.com/api/auth/alluser`, null);
     setUsers(allusers.data)
-    console.log(users.data);
+    console.log(users);
   } catch (error) {
     setError(error.message);  // Handle any errors that occur during fetch
   } finally {
@@ -31,7 +31,7 @@ const allUser = async ()=>{
               <div className="userImg">
                 <img src="../src/assets/images/home.jpg" alt="Logo" />
               </div>
-              <div className="p-2 fullNameText">Suresh Sarkar</div>
+              <div className="p-2 fullNameText">{user.fullname}</div>
           </div>
           ))}
       </div>
