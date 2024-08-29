@@ -19,7 +19,7 @@ const Login = () => {
       }
    
       // return false;
-      const { userData } = await axios.put(`https://chatappbackend-l6tu.onrender.com/api/auth/login`, data)
+      const { userData } = await axios.post(`https://chatappbackend-l6tu.onrender.com/api/auth/login`, data)
       if (userData?.success) {
           navigate("/");
       }
